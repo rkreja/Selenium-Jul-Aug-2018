@@ -5,7 +5,7 @@ public class Test {
 	public static void main(String[] args) {
 		
 		
-		Base.getDriver().get("http://www.cnn.com");		
+		Base.getDriver().get("http://www.timeandtraining.net");		
 
 	}
 
