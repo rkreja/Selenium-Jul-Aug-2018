@@ -4,13 +4,23 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+
+
+
+
 
 public class LoginTests {
+	
+	
 
-	public static void main(String[] args) {
-
+	
+	@Test
+	public static void login_with_invalid_userid() {
+		
 		//setup our driver		
 		System.setProperty("webdriver.chrome.driver", "c:\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
@@ -31,11 +41,29 @@ public class LoginTests {
 		//Click Sign in button
 		driver.findElement(By.id("SubmitLogin")).click();
 		
-		//Verify error message displayed 'There is 1 error'
+		//Verify error message displayed 'There is 1 error'	
 		
-		//Verify error message displayed 'Authentication failed.'
+		String errMsg1;
+		String errMsg2;
 		
+		errMsg1 = driver.findElement(By.xpath("//p[contains(text(),'There is 1')]")).getText();
+		
+		//Verify error message displayed 'Password is required'
+		errMsg2 = driver.findElement(By.xpath("//li[contains(text(),'Password is required')]")).getText();
 
+
+		
+		Assert.assertEquals(errMsg1, "There is 2 error");
+		Assert.assertEquals(errMsg2, "Password is required.");
+		
+		driver.quit();
+		
+		
+		
+		
+		
 	}
+	
+	
 
 }
