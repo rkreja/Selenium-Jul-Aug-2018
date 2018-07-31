@@ -11,8 +11,7 @@ import net.timeandtraining.framework.UI;
 public class WebDriverOperations extends TestBase{
 	
 	
-	
-	
+
 	@Test
 	public void handlingAlertDemo() {
 		

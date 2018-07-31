@@ -2,7 +2,10 @@ package net.timeandtraining.framework;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class UI extends TestBase{
 	
@@ -11,6 +14,17 @@ public class UI extends TestBase{
 	
 	public static void openURL(String url) {
 		driver.get(url);
+	}
+	
+	
+	//ACTIONS CLASS METHODS
+	public static void mouseOverToAnElement(WebElement e) {
+		Actions actions = new Actions(driver);
+		actions.moveToElement(e).build().perform();
+	}
+	public static void dragAndDrop(WebElement source, WebElement target) {
+		Actions actions = new Actions(driver);
+		actions.dragAndDrop(source, target).build().perform();
 	}
 	
 	
@@ -94,6 +108,17 @@ public class UI extends TestBase{
 			String s=driver.findElement(By.xpath(xpath)).getText();
 			return s;			
 		}
-	
+		
+		//ALL EXPLICIT WAIT METHODS
+		public static boolean waitForTextToBePresent(WebElement e, String text) {
+			WebDriverWait wait = new WebDriverWait(driver, 70);				
+			return wait.until(ExpectedConditions.textToBePresentInElement(e, text));
+			
+		}
+		public static WebElement waitUntilElementIsClickable(WebElement e) {
+			WebDriverWait wait = new WebDriverWait(driver, 70);				
+			return wait.until(ExpectedConditions.elementToBeClickable(e));
+			
+		}
 
 }

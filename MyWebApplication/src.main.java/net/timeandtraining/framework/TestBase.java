@@ -15,8 +15,8 @@ public class TestBase {
 
 		// setup our driver
 		System.setProperty("webdriver.chrome.driver", "lib//chromedriver-windows-32bit.exe");		
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		// setup done
 	}
