@@ -15,6 +15,12 @@ public class UI extends TestBase{
 	public static void openURL(String url) {
 		driver.get(url);
 	}
+	public static void closeBrowser() {
+		driver.close();
+	}
+	public static void quitBrowser() {
+		driver.quit();
+	}
 	
 	
 	//ACTIONS CLASS METHODS
