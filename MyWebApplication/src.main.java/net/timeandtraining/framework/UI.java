@@ -37,21 +37,40 @@ public class UI extends TestBase{
 	//FIND ELEMENTS METHODS
 	
 	public static WebElement findElementByXpath(String xpath) {
-		return driver.findElement(By.xpath(xpath));
+		try {
+			return driver.findElement(By.xpath(xpath));
+		} catch (Exception e2) {
+			return null;
+		}
+		
 	}
 	
 	public static WebElement findElementById(String id) {
-		return driver.findElement(By.id(id));
+		try {
+			return driver.findElement(By.id(id));
+		} catch (Exception e2) {
+			return null;
+		}
+
+		
 	}
 	
 	
 	public static WebElement findElementByName(String name) {
-		return driver.findElement(By.name(name));
+		try {
+			return driver.findElement(By.name(name));
+		} catch (Exception e) {
+			return null;
+		}
 	}
 	
 	
 	public static WebElement findElementByClass(String className) {
-		return driver.findElement(By.className(className));
+		try {
+			return driver.findElement(By.className(className));
+		} catch (Exception e) {
+			return null;
+		}
 	}
 	
 	
