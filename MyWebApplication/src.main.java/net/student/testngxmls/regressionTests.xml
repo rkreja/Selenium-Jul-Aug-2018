@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="RegressionTestSuite">
+	<test name="AllTestsFromAllPackagesByChrome">
+
+		<packages>			
+			<package name="net.student.demo.*"/>							
+		</packages>
+
+	</test>
+</suite>

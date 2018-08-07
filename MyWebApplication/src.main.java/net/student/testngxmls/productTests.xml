@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="allProductTests">
+	<test name="ProductTestsByChrome">
+		<classes>
+			<class name="net.student.demo.product.ProductTests">				
+			</class>
+		</classes>	
+	</test>		
+</suite>

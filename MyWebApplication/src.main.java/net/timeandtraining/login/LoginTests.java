@@ -18,10 +18,7 @@ import net.timeandtraining.framework.UI;
 
 public class LoginTests extends TestBase{
 	
-	
-	public void myNewTest() {
-		
-	}
+
 	
 	@Test
 	public void login_with_invalid_userid() {
@@ -64,15 +61,13 @@ public class LoginTests extends TestBase{
 		Assert.assertEquals(errMsg1, "There is 1 error");
 		Assert.assertEquals(errMsg2, "Password is required.");
 		
-		driver.close();
-		driver.quit();
 		
 		
 		
 		
 		
 	}
-	
+	@Test
 	public void login_with_valid_userid_but_invalid_password() {
 //		Go to http://www.automationpractice.com
 //		Click Sign in button from top right corner of the page
@@ -122,8 +117,6 @@ public class LoginTests extends TestBase{
 		
 		Assert.assertEquals(errMsg1, "There is 1 error");
 		Assert.assertEquals(errMsg2, "Password is required.");
-		driver.close();
-		driver.quit();
 	}
 
 	
