@@ -2,47 +2,20 @@ package net.student.demo.purchase;
 
 import org.testng.annotations.Test;
 
-public class PurchaseTests {
+import net.timeandtraining.framework.TestBase;
+
+public class PurchaseTests extends TestBase{
 	
 	@Test
 	public void PurchaseTestOne() {
-		
+		UI.openURL("http://automationpractice.com");
 	}
+	
 	@Test
 	public void PurchaseTestTwo() {
-		
+		UI.openURL("http://automationpractice.com");
 	}
-	@Test
-	public void PurchaseTestThree() {
-		
-	}
-	@Test
-	public void PurchaseTestFour() {
-		
-	}
-	@Test
-	public void PurchaseTestFive() {
-		
-	}
-	@Test
-	public void PurchaseTestSix() {
-		
-	}
-	@Test
-	public void PurchaseTestSeven() {
-		
-	}
-	@Test
-	public void PurchaseTestEight() {
-		
-	}
-	@Test
-	public void PurchaseTestNine() {
-		
-	}
-	@Test
-	public void PurchaseTestTen() {
-		
-	}
+
+
 	
 }

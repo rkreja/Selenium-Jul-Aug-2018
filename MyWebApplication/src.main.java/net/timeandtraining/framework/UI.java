@@ -1,34 +1,39 @@
 package net.timeandtraining.framework;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class UI extends TestBase{
+public class UI {
+	
+	private WebDriver driver=null;
 	
 	
-	
-	
-	public static void openURL(String url) {
+	public UI(WebDriver driver) {
+		this.driver=driver;
+	}
+			
+	public void openURL(String url) {
 		driver.get(url);
 	}
-	public static void closeBrowser() {
+	public void closeBrowser() {
 		driver.close();
 	}
-	public static void quitBrowser() {
+	public void quitBrowser() {
 		driver.quit();
 	}
 	
 	
 	//ACTIONS CLASS METHODS
-	public static void mouseOverToAnElement(WebElement e) {
+	public void mouseOverToAnElement(WebElement e) {
 		Actions actions = new Actions(driver);
 		actions.moveToElement(e).build().perform();
 	}
-	public static void dragAndDrop(WebElement source, WebElement target) {
+	public void dragAndDrop(WebElement source, WebElement target) {
 		Actions actions = new Actions(driver);
 		actions.dragAndDrop(source, target).build().perform();
 	}
@@ -36,7 +41,7 @@ public class UI extends TestBase{
 	
 	//FIND ELEMENTS METHODS
 	
-	public static WebElement findElementByXpath(String xpath) {
+	public WebElement findElementByXpath(String xpath) {
 		try {
 			return driver.findElement(By.xpath(xpath));
 		} catch (Exception e2) {
@@ -45,7 +50,7 @@ public class UI extends TestBase{
 		
 	}
 	
-	public static WebElement findElementById(String id) {
+	public WebElement findElementById(String id) {
 		try {
 			return driver.findElement(By.id(id));
 		} catch (Exception e2) {
@@ -56,7 +61,7 @@ public class UI extends TestBase{
 	}
 	
 	
-	public static WebElement findElementByName(String name) {
+	public WebElement findElementByName(String name) {
 		try {
 			return driver.findElement(By.name(name));
 		} catch (Exception e) {
@@ -65,7 +70,7 @@ public class UI extends TestBase{
 	}
 	
 	
-	public static WebElement findElementByClass(String className) {
+	public WebElement findElementByClass(String className) {
 		try {
 			return driver.findElement(By.className(className));
 		} catch (Exception e) {
@@ -75,15 +80,15 @@ public class UI extends TestBase{
 	
 	
 	//TO HANDLE SELECT ELEMENT
-	public static void selectByVisibleText(WebElement selectElement, String visibleText) {
+	public void selectByVisibleText(WebElement selectElement, String visibleText) {
 		Select select = new Select(selectElement);
 		select.selectByVisibleText(visibleText);
 	}
-	public static void selectByVisibleIndex(WebElement selectElement, int index) {
+	public void selectByVisibleIndex(WebElement selectElement, int index) {
 		Select select = new Select(selectElement);
 		select.selectByIndex(index);
 	}
-	public static void selectByVisibleValue(WebElement selectElement, String value) {
+	public void selectByVisibleValue(WebElement selectElement, String value) {
 		Select select = new Select(selectElement);
 		select.selectByValue(value);
 	}
@@ -94,53 +99,53 @@ public class UI extends TestBase{
 	
 	//ALL CLICK METHODS
 	
-	public static void alert_accept() {
+	public void alert_accept() {
 		driver.switchTo().alert().accept();
 	}
 	
-	public static void clickElementByClassName(String className) {
+	public  void clickElementByClassName(String className) {
 		driver.findElement(By.className(className)).click();
 	}
-	public static void clickElementById(String id) {
+	public  void clickElementById(String id) {
 		driver.findElement(By.id(id)).click();
 	}
-	public static void clickElementByXpath(String xpath) {
+	public  void clickElementByXpath(String xpath) {
 		driver.findElement(By.xpath(xpath)).click();
 	}
-	public static void clickElementByName(String name) {
+	public  void clickElementByName(String name) {
 		driver.findElement(By.name(name)).click();
 	}
 	
 	
 	//ALL SENDKEYS METHODS
-	public static void typeElementById(String id, String textToType) {
+	public  void typeElementById(String id, String textToType) {
 		driver.findElement(By.id(id)).sendKeys(textToType);
 	}
 	
 	
 	//ALL GET TEXT / ATTRIBUTE METHODS
-		public static String getTextByClassName(String className) {
+		public  String getTextByClassName(String className) {
 			String s=driver.findElement(By.className(className)).getText();
 			return s;			
 		}
 		
-		public static String getTextById(String id) {
+		public  String getTextById(String id) {
 			String s=driver.findElement(By.id(id)).getText();
 			return s;			
 		}
 
-		public static String getTextByXpath(String xpath) {
+		public  String getTextByXpath(String xpath) {
 			String s=driver.findElement(By.xpath(xpath)).getText();
 			return s;			
 		}
 		
 		//ALL EXPLICIT WAIT METHODS
-		public static boolean waitForTextToBePresent(WebElement e, String text) {
+		public  boolean waitForTextToBePresent(WebElement e, String text) {
 			WebDriverWait wait = new WebDriverWait(driver, 70);				
 			return wait.until(ExpectedConditions.textToBePresentInElement(e, text));
 			
 		}
-		public static WebElement waitUntilElementIsClickable(WebElement e) {
+		public  WebElement waitUntilElementIsClickable(WebElement e) {
 			WebDriverWait wait = new WebDriverWait(driver, 70);				
 			return wait.until(ExpectedConditions.elementToBeClickable(e));
 			
