@@ -1,0 +1,72 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="prallel test suite">
+	
+	<test name=" all purchase tests with chrome" preserve-order="true">
+		<parameter name="browser" value="ch"></parameter>
+		<classes>
+			<class name="net.student.demo.purchase.PurchaseTests">			
+			</class>
+			
+		</classes>	
+	</test>
+	
+	<test name=" all purchase tests with chrome1">
+		<parameter name="browser" value="ch"></parameter>
+		<classes>
+			<class name="net.student.demo.purchase.PurchaseTests">			
+			</class>
+		</classes>	
+	</test>
+	
+	
+	
+	<test name=" all purchase tests with chrome2">
+		<parameter name="browser" value="ch"></parameter>
+		<classes>
+			<class name="net.student.demo.purchase.PurchaseTests"/>
+		</classes>	
+	</test>
+	
+	
+	
+		<test name=" all purchase tests with chrome3">
+		<parameter name="browser" value="ch"></parameter>
+		<classes>
+			<class name="net.student.demo.purchase.PurchaseTests"/>
+		</classes>	
+	</test>
+	
+	
+	<test name=" all purchase tests with ie">
+		<parameter name="browser" value="ie"></parameter>
+		<classes>
+			<class name="net.student.demo.purchase.PurchaseTests"/>
+		</classes>	
+	</test>
+	
+	
+	<test name=" all purchase tests with ie1">
+		<parameter name="browser" value="ie"></parameter>
+		<classes>
+			<class name="net.student.demo.purchase.PurchaseTests"/>
+		</classes>	
+	</test>
+	
+	
+	<test name=" all purchase tests with ie2">
+		<parameter name="browser" value="ie"></parameter>
+		<classes>
+			<class name="net.student.demo.purchase.PurchaseTests"/>
+		</classes>	
+	</test>
+	
+	
+	<test name=" all purchase tests with ie3">
+		<parameter name="browser" value="ie"></parameter>
+		<classes>
+			<class name="net.student.demo.purchase.PurchaseTests"/>
+		</classes>	
+	</test>
+	
+	
+</suite>

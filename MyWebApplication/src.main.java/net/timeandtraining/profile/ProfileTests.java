@@ -5,7 +5,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import net.timeandtraining.framework.TestBase;
-import net.timeandtraining.framework.UI;
 
 public class ProfileTests extends TestBase{
 	

@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="allPurchaseTests">
+
+	<test name="PurchaseTestsByChrome">
+		<parameter name="browser" value="ch"></parameter>
+		<classes>						
+			<class name="net.student.demo.purchase.PurchaseTests"/>
+		</classes>
+	</test>
+
+
+
+
+</suite>

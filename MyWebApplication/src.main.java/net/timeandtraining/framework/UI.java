@@ -7,6 +7,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 public class UI {
 	
@@ -121,6 +122,51 @@ public class UI {
 	public  void typeElementById(String id, String textToType) {
 		driver.findElement(By.id(id)).sendKeys(textToType);
 	}
+	public  void typeElementByXpath(String xpath, String textToType) {
+		driver.findElement(By.xpath(xpath)).sendKeys(textToType);
+	}
+	
+	
+	//ALL VERIFICATION METHOD
+	
+	public void verifyTextById(String id, String text) {
+		String actual=driver.findElement(By.id(id)).getText();
+		Assert.assertEquals(actual, text);
+	}
+	public void verifyTextByClassName(String className, String text) {
+		String actual=driver.findElement(By.xpath(className)).getText();
+		Assert.assertEquals(actual, text);
+	}
+	public void verifyTextByXpath(String xpath, String text) {
+		String actual=driver.findElement(By.xpath(xpath)).getText();
+		Assert.assertEquals(actual, text);
+	}
+	public void verifyTextByCssSelector(String css, String text) {
+		String actual=driver.findElement(By.cssSelector(css)).getText();
+		Assert.assertEquals(actual, text);
+	}
+	public void verifyTextByName(String name, String text) {
+		String actual=driver.findElement(By.name(name)).getText();
+		Assert.assertEquals(actual, text);
+	}
+	
+	
+	public void verifyElementIsEnabledById(String id) {
+		Assert.assertEquals(driver.findElement(By.id(id)).isEnabled(), true);
+	}
+	public void verifyElementIsEnabledByName(String name) {
+		Assert.assertEquals(driver.findElement(By.name(name)).isEnabled(), true);
+	}
+	public void verifyElementIsEnabledByXpath(String xpath) {
+		Assert.assertEquals(driver.findElement(By.xpath(xpath)).isEnabled(), true);
+	}
+	public void verifyElementIsEnabledByClassName(String className) {
+		Assert.assertEquals(driver.findElement(By.className(className)).isEnabled(), true);
+	}
+	public void verifyElementIsEnabledBycssSelector(String css) {
+		Assert.assertEquals(driver.findElement(By.cssSelector(css)).isEnabled(), true);
+	}
+	
 	
 	
 	//ALL GET TEXT / ATTRIBUTE METHODS
@@ -150,5 +196,7 @@ public class UI {
 			return wait.until(ExpectedConditions.elementToBeClickable(e));
 			
 		}
+
+	
 
 }
