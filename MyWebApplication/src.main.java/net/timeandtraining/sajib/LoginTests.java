@@ -83,6 +83,7 @@ public class LoginTests extends TestBase {
 //			driver.get("http://www.automationpractice.com");
 			UI.openURL("http://www.automationpractice.com");
 			
+			
 //			Step 2 Click Sign in button from top right corner of the page
 //			driver.findElement(By.xpath("//a[@class='login' and @title='Log in to your customer account']")).click();
 			UI.clickElementByXpath("//a[@class='login' and @title='Log in to your customer account']");
@@ -114,7 +115,6 @@ public class LoginTests extends TestBase {
 //			String MyAccount =driver.findElement(By.xpath("//span[contains(text(), 'My personal information')]")).getText();
 //			System.out.println(MyAccount);
 			UI.verifyTextByXpath("//span[contains(text(), 'My personal information')]", "MY PERSONAL INFORMATION");
-
 //			Step 9 Click 'Sign out' button from top right corner
 //			driver.findElement(By.xpath("//a[@class='logout']")).click();
 			UI.clickElementByXpath("//a[@class='logout']");
