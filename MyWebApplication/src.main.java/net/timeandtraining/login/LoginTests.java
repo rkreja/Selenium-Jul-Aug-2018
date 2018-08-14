@@ -50,7 +50,7 @@ public class LoginTests extends TestBase{
 		String errMsg2;
 		
 //		errMsg1 = driver.findElement(By.xpath("//p[contains(text(),'There is 1')]")).getText();
-		errMsg1= UI.getTextByXpath("//p[contains(text(),'There is 1')]");
+		errMsg1= UI.getTextByXpath("//p[contains(text(),'There is 1x')]");
 		
 		//Verify error message displayed 'Password is required'
 		errMsg2 = driver.findElement(By.xpath("//li[contains(text(),'Password is required')]")).getText();

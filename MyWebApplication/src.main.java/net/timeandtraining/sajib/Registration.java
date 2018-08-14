@@ -1,4 +1,4 @@
-package net.timeandtraining.sajib;
+/*package net.timeandtraining.sajib;
 
 import java.util.Random;
 
@@ -188,3 +188,4 @@ public class Registration extends TestBase {
 	}
 
 }
+*/

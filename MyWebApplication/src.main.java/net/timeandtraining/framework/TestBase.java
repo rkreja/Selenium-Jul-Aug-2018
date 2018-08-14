@@ -8,9 +8,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
+
+@Listeners(TestReporter.class)
 public class TestBase {
 
 	protected static WebDriver driver=null;
@@ -78,5 +81,7 @@ public class TestBase {
 	public void closeDriver() {
 		UI.closeBrowser();
 	}
+
+	
 
 }

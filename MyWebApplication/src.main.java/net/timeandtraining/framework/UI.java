@@ -1,6 +1,12 @@
 package net.timeandtraining.framework;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -20,12 +26,15 @@ public class UI {
 			
 	public void openURL(String url) {
 		driver.get(url);
+		TestReporter.getReporter().info("Navigated to: "+ url);
 	}
 	public void closeBrowser() {
 		driver.close();
+		TestReporter.getReporter().info("successfully closed the broswer");
 	}
-	public void quitBrowser() {
+	public void quitBrowser() {		
 		driver.quit();
+		TestReporter.getReporter().info("successfully quit the broswer");
 	}
 	
 	
@@ -33,10 +42,12 @@ public class UI {
 	public void mouseOverToAnElement(WebElement e) {
 		Actions actions = new Actions(driver);
 		actions.moveToElement(e).build().perform();
+		TestReporter.getReporter().info("successfully hover over the element");
 	}
 	public void dragAndDrop(WebElement source, WebElement target) {
 		Actions actions = new Actions(driver);
 		actions.dragAndDrop(source, target).build().perform();
+		TestReporter.getReporter().info("successfully dragged and dropped the element");
 	}
 	
 	
@@ -106,48 +117,94 @@ public class UI {
 	
 	public  void clickElementByClassName(String className) {
 		driver.findElement(By.className(className)).click();
+		TestReporter.getReporter().info("successfully clicked on an element by class: "+ className);
 	}
 	public  void clickElementById(String id) {
 		driver.findElement(By.id(id)).click();
+		TestReporter.getReporter().info("successfully clicked on an element by id: "+ id);
 	}
 	public  void clickElementByXpath(String xpath) {
 		driver.findElement(By.xpath(xpath)).click();
+		TestReporter.getReporter().info("successfully clicked on an element by xpath: "+ xpath);
 	}
 	public  void clickElementByName(String name) {
 		driver.findElement(By.name(name)).click();
+		TestReporter.getReporter().info("successfully clicked on an element by name: "+ name);
 	}
 	
 	
 	//ALL SENDKEYS METHODS
 	public  void typeElementById(String id, String textToType) {
 		driver.findElement(By.id(id)).sendKeys(textToType);
+		TestReporter.getReporter().info("Typed "+textToType+" on element by id: "+id);
 	}
 	public  void typeElementByXpath(String xpath, String textToType) {
 		driver.findElement(By.xpath(xpath)).sendKeys(textToType);
+		TestReporter.getReporter().info("Typed "+textToType+" on element by xpath: "+xpath);
 	}
 	
 	
 	//ALL VERIFICATION METHOD
 	
-	public void verifyTextById(String id, String text) {
+	
+	private void reportFailure(String msg) {
+
+		
+		long currentMilisecond = System.currentTimeMillis();
+		File capturedFile=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+				try {
+		FileUtils.copyFile(capturedFile, new File("test-output/screenshots/"+currentMilisecond+".png"));
+		TestReporter.getReporter().addScreenCaptureFromPath("screenshots/"+currentMilisecond+".png");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void verifyTextById(String id, String textToverify) {
 		String actual=driver.findElement(By.id(id)).getText();
-		Assert.assertEquals(actual, text);
+		if(actual.equals(textToverify)) {
+			TestReporter.getReporter().pass("Text ["+textToverify+"] verfication was successfull");
+		}else {
+			reportFailure("Failed to verify Text ["+textToverify+"]");
+		}
+		//Assert.assertEquals(actual, textToverify);
 	}
-	public void verifyTextByClassName(String className, String text) {
+	public void verifyTextByClassName(String className, String textToverify) {
 		String actual=driver.findElement(By.xpath(className)).getText();
-		Assert.assertEquals(actual, text);
+		if(actual.equals(textToverify)) {
+			TestReporter.getReporter().pass("Text ["+textToverify+"] verficcation was successfull");
+		}else {
+			reportFailure("Failed to verify Text ["+textToverify+"]");
+		}
+//		Assert.assertEquals(actual, textToverify);
 	}
-	public void verifyTextByXpath(String xpath, String text) {
+	public void verifyTextByXpath(String xpath, String textToverify) {
 		String actual=driver.findElement(By.xpath(xpath)).getText();
-		Assert.assertEquals(actual, text);
+		if(actual.equals(textToverify)) {
+			TestReporter.getReporter().pass("Text ["+textToverify+"] verfication was successfull");
+		}else {
+			reportFailure("Failed to verify Text ["+textToverify+"]");
+		}
+		//Assert.assertEquals(actual, text);
 	}
-	public void verifyTextByCssSelector(String css, String text) {
+	public void verifyTextByCssSelector(String css, String textToverify) {
 		String actual=driver.findElement(By.cssSelector(css)).getText();
-		Assert.assertEquals(actual, text);
+		if(actual.equals(textToverify)) {
+			TestReporter.getReporter().pass("Text ["+textToverify+"] verficcation was successfull");
+		}else {
+			reportFailure("Failed to verify Text ["+textToverify+"]");
+		}
+//		Assert.assertEquals(actual, textToverify);
 	}
-	public void verifyTextByName(String name, String text) {
+	public void verifyTextByName(String name, String textToverify) {
 		String actual=driver.findElement(By.name(name)).getText();
-		Assert.assertEquals(actual, text);
+		if(actual.equals(textToverify)) {
+			TestReporter.getReporter().pass("Text ["+textToverify+"] verficcation was successfull");
+		}else {
+			reportFailure("Failed to verify Text ["+textToverify+"]");
+		}
+//		Assert.assertEquals(actual, textToverify);
 	}
 	
 	

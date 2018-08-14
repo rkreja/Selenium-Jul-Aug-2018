@@ -11,7 +11,7 @@ import net.timeandtraining.framework.TestBase;
 
 public class SearchTests extends TestBase {
 
-	@Test(testName = "Price Range", priority = 1, enabled = true)
+	@Test
 	public void TC001_Price_Range_Search() {
 
 		// Step 1 Go to http://www.automationpractice.com
